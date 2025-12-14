@@ -28,7 +28,7 @@ export default function Index() {
         renderItem={({ item }) => (
           <View
             style={{
-              backgroundColor: "#1e293b",
+              backgroundColor: "#1e293b", 
               padding: 15,
               borderRadius: 8,
               marginBottom: 10,
