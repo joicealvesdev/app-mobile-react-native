@@ -1,4 +1,4 @@
-import { Text, View } from 'react-native'
+import { Text, View } from "react-native"
 import { styles } from './styles'
 export default function Index() 
 {  return (   
@@ -6,4 +6,3 @@ export default function Index()
 <Text style={styles.title}>Hello</Text>      
 <Text style={styles.title}>React Native!</Text>    
 </View>  )}
-
