@@ -1,47 +1,57 @@
-import { View, Text, TouchableOpacity, FlatList, Image } from "react-native";
-import { router } from "expo-router";
+import { View, Text, Image, FlatList, TouchableOpacity } from "react-native";
+import { Link } from "expo-router";
 import { useState } from "react";
 
-type Link = {
-  id: string;
-  url: string;
-};
-
 export default function Index() {
-  const [links, setLinks] = useState<Link[]>([
+  const [links] = useState([
     { id: "1", url: "https://rocketseat.com.br" },
     { id: "2", url: "https://expo.dev" },
   ]);
 
   return (
-    <View style={{ flex: 1, padding: 20 }}>
+    <View style={{ flex: 1, backgroundColor: "#0f172a", padding: 20 }}>
+      
       <Image
         source={require("../../assets/images/splash.png")}
-        style={{ width: 120, height: 120, alignSelf: "center", marginBottom: 20 }}
+        style={{
+          width: 500,
+          height: 500,
+          alignSelf: "center",
+          marginBottom: -95,
+        }} 
         resizeMode="contain"
       />
 
-      <FlatList<Link>
+      <FlatList
         data={links}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <Text style={{ marginBottom: 10 }}>{item.url}</Text>
+          <View
+            style={{
+              backgroundColor: "#1e293b",
+              padding: 15,
+              borderRadius: 8,
+              marginBottom: 10,
+            }}
+          >
+            <Text style={{ color: "#e5e7eb" }}>{item.url}</Text>
+          </View>
         )}
       />
 
-      <TouchableOpacity
-        onPress={() => router.push("/add")}
+      <Link
+        href="/add"
         style={{
           backgroundColor: "#7c3aed",
-          padding: 15,
-          borderRadius: 8,
+          padding: 18,
+          borderRadius: 10,
           marginTop: 20,
         }}
       >
-        <Text style={{ color: "#fff", textAlign: "center" }}>
+        <Text style={{ color: "#fff", textAlign: "center", fontWeight: "bold" }}>
           Adicionar Link
         </Text>
-      </TouchableOpacity>
+      </Link>
     </View>
   );
 }
