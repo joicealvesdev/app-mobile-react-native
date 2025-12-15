@@ -7,7 +7,7 @@ import { Categories } from '../../components/category/categories'
 import { Link } from '../../components/category/link'
 import { colors } from '../../styles/colors'
 import { Option } from '../../components/option'
-
+import { router } from 'expo-router'
 export default function Index() {
   const [open, setOpen] = useState(true)
   return (
@@ -19,7 +19,7 @@ export default function Index() {
           style={styles.logo}
         />
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => router.push("/add")}>
           <MaterialIcons
             name="add-circle-outline"
             size={24}
@@ -47,7 +47,7 @@ export default function Index() {
       />
 
       {/* MODAL */}
-      <Modal transparent visible={open} animationType="slide">
+      <Modal transparent visible={false} animationType="slide">
         <View style={styles.modal}>
           <View style={styles.modalContent}>
             <View style={styles.modalHeader}>
