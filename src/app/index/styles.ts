@@ -53,7 +53,7 @@ export const styles = StyleSheet.create({
  modalcategory: {
   flex: 1,
   fontSize: 16,
-  color: colors.purple[500],
+  color: "#00B37E",
   fontWeight: "500",
  },
  modalLinkName: {
@@ -72,5 +72,14 @@ export const styles = StyleSheet.create({
   height: 50,
   backgroundColor: colors.gray[800],
   borderRadius: 6,
- }
+ },
+modalFooter: {
+    flexDirection: "row",
+    marginTop: 32,
+    width: "100%",
+    justifyContent: "space-between",
+    borderTopWidth: 1,
+    borderTopColor: colors.gray[600],
+    paddingVertical: 14,
+  },
 })
