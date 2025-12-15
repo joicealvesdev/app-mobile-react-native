@@ -8,8 +8,9 @@ import { Link } from '../../components/category/link'
 import { colors } from '../../styles/colors'
 import { Option } from '../../components/option'
 import { router } from 'expo-router'
-
+import { categories } from '../../utils/categories'
 export default function Index() {
+  const [category, setCategory] = useState(categories[0].name)
   const [open, setOpen] = useState(true)
   return (
     <View style={styles.container}>
@@ -30,7 +31,7 @@ export default function Index() {
         </TouchableOpacity>
       </View>
 
-      <Categories />
+       <Categories onChange={setCategory} selected={category} />
 
       <FlatList 
         data={["1", "2", "3"]}
