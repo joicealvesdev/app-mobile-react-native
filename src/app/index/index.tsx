@@ -1,11 +1,4 @@
-import { 
-  FlatList, 
-  Image, 
-  TouchableOpacity, 
-  View, 
-  Modal, 
-  Text 
-} from 'react-native'
+import { FlatList, Image, TouchableOpacity, View, Modal,Text } from 'react-native'
 import { useState } from 'react'
 import { MaterialIcons } from "@expo/vector-icons"
 
@@ -16,10 +9,9 @@ import { colors } from '../../styles/colors'
 
 export default function Index() {
   const [open, setOpen] = useState(true)
-
   return (
     <View style={styles.container}>
-      {/* HEADER */}
+      
       <View style={styles.header}>
         <Image
           source={require("../../assets/logo.png")}
@@ -30,7 +22,8 @@ export default function Index() {
           <MaterialIcons
             name="add-circle-outline"
             size={24}
-            color={colors.gray[500]}
+            color="#00B37E"
+
           />
         </TouchableOpacity>
       </View>

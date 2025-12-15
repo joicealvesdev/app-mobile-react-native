@@ -53,7 +53,7 @@ export const styles = StyleSheet.create({
  modalcategory: {
   flex: 1,
   fontSize: 16,
-  color: colors.gray[400],
+  color: colors.purple[500],
   fontWeight: "500",
  },
  modalLinkName: {
