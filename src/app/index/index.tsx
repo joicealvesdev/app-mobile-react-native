@@ -8,6 +8,7 @@ import { Link } from '../../components/category/link'
 import { colors } from '../../styles/colors'
 import { Option } from '../../components/option'
 import { router } from 'expo-router'
+
 export default function Index() {
   const [open, setOpen] = useState(true)
   return (
