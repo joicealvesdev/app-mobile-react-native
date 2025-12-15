@@ -1,13 +1,25 @@
-import { FlatList, Image, TouchableOpacity, View } from 'react-native'
-import { MaterialIcons } from "@expo/vector-icons";
-import { Category } from '../../components/category'
-import { styles } from "./styles";
-import { categories } from '../../utils/categories';
+import { 
+  FlatList, 
+  Image, 
+  TouchableOpacity, 
+  View, 
+  Modal, 
+  Text 
+} from 'react-native'
+import { useState } from 'react'
+import { MaterialIcons } from "@expo/vector-icons"
+
+import { styles } from "./styles"
 import { Categories } from '../../components/category/categories'
 import { Link } from '../../components/category/link'
+import { colors } from '../../styles/colors'
+
 export default function Index() {
+  const [open, setOpen] = useState(true)
+
   return (
     <View style={styles.container}>
+      {/* HEADER */}
       <View style={styles.header}>
         <Image
           source={require("../../assets/logo.png")}
@@ -18,25 +30,49 @@ export default function Index() {
           <MaterialIcons
             name="add-circle-outline"
             size={24}
-            color="#00B37E"
+            color={colors.gray[500]}
           />
         </TouchableOpacity>
       </View>
-       <Categories />
-         <FlatList 
+
+      <Categories />
+
+      <FlatList 
         data={["1", "2", "3"]}
         keyExtractor={item => item}
-        renderItem={({ item }) => (
+        renderItem={() => (
           <Link 
-            name='Rocketseat'
-            url='https://www.rocketseat.com.br/'
-            onDetails={() => console.log('Clicou!')}
+            name="Rocketseat"
+            url="https://www.rocketseat.com.br/"
+            onDetails={() => setOpen(true)}
           />
         )}
         style={styles.links}
         contentContainerStyle={styles.linksContent}
         showsVerticalScrollIndicator={false}
       />
+
+      {/* MODAL */}
+      <Modal transparent visible={open} animationType="slide">
+        <View style={styles.modal}>
+          <View style={styles.modalContent}>
+            <View style={styles.modalHeader}>
+              <Text style={styles.modalcategory}>Cursos</Text>
+
+              <TouchableOpacity onPress={() => setOpen(false)}>
+                <MaterialIcons 
+                  name="close" 
+                  size={20} 
+                  color={colors.gray[400]} 
+                />
+              </TouchableOpacity>
+            </View>
+
+            <Text style={styles.modalLinkName}>Rocketseat</Text>
+            <Text style={styles.modalUrl}>https://www.rocketseat.com.br/</Text>
+             </View>
+           </View>
+        </Modal>
     </View>
-  );
+  )
 }
