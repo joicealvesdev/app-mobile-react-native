@@ -1,20 +1,36 @@
-import { FlatList, Image, TouchableOpacity, View, Modal,Text } from 'react-native'
-import { useState } from 'react'
+import { Alert, FlatList, Image, TouchableOpacity, View, Modal, Text } from "react-native"
+import { useEffect, useState } from "react"
 import { MaterialIcons } from "@expo/vector-icons"
-
 import { styles } from "./styles"
-import { Categories } from '../../components/category/categories'
-import { Link } from '../../components/category/link'
-import { colors } from '../../styles/colors'
-import { Option } from '../../components/option'
-import { router } from 'expo-router'
-import { categories } from '../../utils/categories'
+import { Categories } from "../../components/category/categories"
+import { Link } from "../../components/category/link"
+import { colors } from "../../styles/colors"
+import { Option } from "../../components/option"
+import { router } from "expo-router"
+import { categories } from "../../utils/categories"
+import { linkStorage, LinkStorage } from "../../storage/link-storage"
+
 export default function Index() {
+  const [links, setLinks] = useState<LinkStorage[]>([])
   const [category, setCategory] = useState(categories[0].name)
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
+  const [selectedLink, setSelectedLink] = useState<LinkStorage | null>(null)
+
+  async function getLinks() {
+    try {
+      const response = await linkStorage.get()
+      setLinks(response.filter(item => item.category === category))
+    } catch (error) {
+      Alert.alert("Erro", "Não foi possível listar os links")
+    }
+  }
+
+  useEffect(() => {
+    getLinks()
+  }, [category])
+
   return (
     <View style={styles.container}>
-      
       <View style={styles.header}>
         <Image
           source={require("../../assets/logo.png")}
@@ -26,21 +42,23 @@ export default function Index() {
             name="add-circle-outline"
             size={24}
             color="#00B37E"
-
           />
         </TouchableOpacity>
       </View>
 
-       <Categories onChange={setCategory} selected={category} />
+      <Categories selected={category} onChange={setCategory} />
 
-      <FlatList 
-        data={["1", "2", "3"]}
-        keyExtractor={item => item}
-        renderItem={() => (
-          <Link 
-            name="Rocketseat"
-            url="https://www.rocketseat.com.br/"
-            onDetails={() => setOpen(true)}
+      <FlatList
+        data={links}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <Link
+            name={item.name}
+            url={item.url}
+            onDetails={() => {
+              setSelectedLink(item)
+              setOpen(true)
+            }}
           />
         )}
         style={styles.links}
@@ -49,33 +67,33 @@ export default function Index() {
       />
 
       {/* MODAL */}
-      <Modal transparent visible={false} animationType="slide">
+      <Modal transparent visible={open} animationType="slide">
         <View style={styles.modal}>
           <View style={styles.modalContent}>
             <View style={styles.modalHeader}>
-              <Text style={styles.modalcategory}>Cursos</Text>
+              <Text style={styles.modalcategory}>
+                {selectedLink?.category}
+              </Text>
 
               <TouchableOpacity onPress={() => setOpen(false)}>
-                <MaterialIcons 
-                  name="close" 
-                  size={20} 
-                  color={colors.gray[400]} 
+                <MaterialIcons
+                  name="close"
+                  size={20}
+                  color={colors.gray[400]}
                 />
               </TouchableOpacity>
             </View>
 
-            <Text style={styles.modalLinkName}>Rocketseat</Text>
-            <Text style={styles.modalUrl}>https://www.rocketseat.com.br/</Text>
-             
-              <View style={styles.modalFooter}>
+            <Text style={styles.modalLinkName}>{selectedLink?.name}</Text>
+            <Text style={styles.modalUrl}>{selectedLink?.url}</Text>
+
+            <View style={styles.modalFooter}>
               <Option name="Excluir" icon="delete" variant="secondary" />
               <Option name="Abrir" icon="language" />
             </View>
           </View>
         </View>
-
-
-        </Modal>
+      </Modal>
     </View>
   )
 }
