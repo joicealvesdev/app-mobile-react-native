@@ -15,7 +15,8 @@ export default function Index() {
   const [category, setCategory] = useState(categories[0].name)
   const [open, setOpen] = useState(false)
   const [selectedLink, setSelectedLink] = useState<LinkStorage | null>(null)
-
+ 
+  
   async function getLinks() {
     try {
       const response = await linkStorage.get()
@@ -26,7 +27,7 @@ export default function Index() {
   }
   async function linkRemove() {
     try {
-      await linkStorage.remove(link.id)
+      await linkStorage.remove(selectedLink)
       getLinks()
       setShowModal(false)
     } catch (error) {
