@@ -69,7 +69,7 @@ Este projeto tem como foco:
 
 ---
 
-## 👩‍💻 Autor 
+## 👩🏻‍💻  Autor 
 
 **Joice Alves da Silva**
 
