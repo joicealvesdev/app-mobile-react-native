@@ -1,4 +1,4 @@
-import { Alert, FlatList, Image, TouchableOpacity, View, Modal, Text } from "react-native"
+import { Alert, FlatList, Image, TouchableOpacity, View, Modal, Text, Linking } from "react-native"
 import { useEffect, useState } from "react"
 import { MaterialIcons } from "@expo/vector-icons"
 import { styles } from "./styles"
@@ -51,6 +51,17 @@ function handleRemove() {
   )
 }
 
+ async function handleOpenLink() {
+  if (!selectedLink) return
+
+  const supported = await Linking.canOpenURL(selectedLink.url)
+
+  if (!supported) {
+    return Alert.alert("Erro", "Não foi possível abrir o link")
+  }
+
+  await Linking.openURL(selectedLink.url)
+}
 
 
   useEffect(() => {
