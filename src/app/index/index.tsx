@@ -26,22 +26,31 @@ export default function Index() {
     }
   }
   async function linkRemove() {
-    try {
-      await linkStorage.remove(selectedLink)
-      getLinks()
-      setShowModal(false)
-    } catch (error) {
-      Alert.alert("Erro", "Não foi possível excluir")
-      console.log(error);    
-    }
-  }
+  if (!selectedLink) return
 
-  async function handleRemove() {
-    Alert.alert("Excluir", "Deseja realmente excluir?", [
-      { style: "cancel", text: "Não" },
-      { text: "Sim", onPress: linkRemove },
-    ])
+  try {
+    await linkStorage.remove(selectedLink.id)
+    setOpen(false)
+    setSelectedLink(null)
+    getLinks()
+  } catch (error) {
+    Alert.alert("Erro", "Não foi possível excluir")
+    console.log(error)
   }
+}
+
+
+function handleRemove() {
+  Alert.alert(
+    "Excluir",
+    "Deseja realmente excluir este link?",
+    [
+      { text: "Cancelar", style: "cancel" },
+      { text: "Excluir", onPress: linkRemove },
+    ]
+  )
+}
+
 
 
   useEffect(() => {
@@ -107,7 +116,13 @@ export default function Index() {
             <Text style={styles.modalUrl}>{selectedLink?.url}</Text>
 
             <View style={styles.modalFooter}>
-            <Option name="Excluir" icon="delete" variant="secondary" onPress={handleRemove} />
+            <Option
+          name="Excluir"
+          icon="delete"
+          variant="secondary"
+           onPress={handleRemove}
+/>
+
               <Option name="Abrir" icon="language" />
             </View>
           </View>
