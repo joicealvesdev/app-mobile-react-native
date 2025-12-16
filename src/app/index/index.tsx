@@ -24,6 +24,24 @@ export default function Index() {
       Alert.alert("Erro", "Não foi possível listar os links")
     }
   }
+  async function linkRemove() {
+    try {
+      await linkStorage.remove(link.id)
+      getLinks()
+      setShowModal(false)
+    } catch (error) {
+      Alert.alert("Erro", "Não foi possível excluir")
+      console.log(error);    
+    }
+  }
+
+  async function handleRemove() {
+    Alert.alert("Excluir", "Deseja realmente excluir?", [
+      { style: "cancel", text: "Não" },
+      { text: "Sim", onPress: linkRemove },
+    ])
+  }
+
 
   useEffect(() => {
     getLinks()
@@ -88,7 +106,7 @@ export default function Index() {
             <Text style={styles.modalUrl}>{selectedLink?.url}</Text>
 
             <View style={styles.modalFooter}>
-              <Option name="Excluir" icon="delete" variant="secondary" />
+            <Option name="Excluir" icon="delete" variant="secondary" onPress={handleRemove} />
               <Option name="Abrir" icon="language" />
             </View>
           </View>
