@@ -1,50 +1,84 @@
-# Welcome to your Expo app 👋
+# 📱 Link Saver App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Aplicativo mobile desenvolvido com **React Native** e **Expo**, com o objetivo de armazenar, organizar e gerenciar links por categorias de forma simples e eficiente.
 
-## Get started
+Este projeto foi criado como prática durante o **Minicurso de React Native da Faculdade de Tecnologia Rocketseat**, colocando em uso conceitos fundamentais do desenvolvimento mobile moderno.
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
-   ```
+## 🚀 Funcionalidades
 
-2. Start the app
+* ➕ Adicionar links personalizados
+* 🗂️ Organização por categorias (Cursos, Projetos, Sites, Artigos, Documentação, etc.)
+* 💾 Persistência de dados com AsyncStorage
+* 🗑️ Remoção de links salvos
+* 🌐 Abertura de links diretamente no navegador
+* 📱 Interface intuitiva e responsiva
 
-   ```bash
-   npx expo start
-   ```
+---
 
-In the output, you'll find options to open the app in a
+## 🛠️ Tecnologias Utilizadas
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+* **React Native**
+* **Expo**
+* **TypeScript**
+* **Expo Router**
+* **AsyncStorage**
+* **StyleSheet**
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+---
 
-## Get a fresh project
+## 📂 Estrutura do Projeto
 
-When you're ready, run:
+O projeto segue uma estrutura organizada por responsabilidade:
+
+* `components/` → Componentes reutilizáveis (botões, inputs, categorias, links)
+* `storage/` → Gerenciamento de dados locais (AsyncStorage)
+* `screens/` → Telas da aplicação
+* `styles/` → Paleta de cores e estilos globais
+
+---
+
+## ▶️ Como Executar o Projeto
 
 ```bash
-npm run reset-project
+# Clone o repositório
+git clone https://github.com/joicealvesdev/app-mobile-react-native
+
+# Acesse a pasta do projeto
+cd link-saver-app
+
+# Instale as dependências
+npm install
+
+# Execute o projeto
+npx expo start
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Você pode rodar o app em um **emulador Android/iOS/Web** ou diretamente no seu celular usando o **Expo Go**.
 
-## Learn more
+---
 
-To learn more about developing your project with Expo, look at the following resources:
+## 🎯 Objetivo do Projeto
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+Este projeto tem como foco:
 
-## Join the community
+* Consolidar conhecimentos em **desenvolvimento mobile**
+* Aplicar boas práticas de organização e componentização
+* Criar uma aplicação funcional, escalável e com boa experiência de uso
 
-Join our community of developers creating universal apps.
+---
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## 👩‍💻 Autor 
+
+**Joice Alves da Silva**
+
+Estudante de Desenvolvimento Front-end, com foco em aplicações mobile e web.
+
+
+🔗 LinkedIn: **(https://www.linkedin.com/in/joice-alves-4a6a16255/)**
+🔗 GitHub: **(https://github.com/joicealvesdev)**
+
+---
+
+⭐ Se este projeto te ajudou ou chamou sua atenção, fique à vontade para deixar uma estrela no repositório!
