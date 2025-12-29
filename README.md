@@ -17,7 +17,7 @@ Este projeto foi criado como prática durante o **Minicurso de React Native da F
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## 🤖 Tecnologias Utilizadas
 
 * **React Native**
 * **Expo**
@@ -71,7 +71,7 @@ Este projeto tem como foco:
 
 ## 👩🏻‍💻  Autor 
 
-**Joice Alves da Silva**
+**Joice Alves**
 
 Estudante de Desenvolvimento Front-end, com foco em aplicações mobile e web.
 
