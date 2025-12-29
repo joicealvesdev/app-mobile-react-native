@@ -6,7 +6,7 @@ Este projeto foi criado como prática durante o **Minicurso de React Native da F
 
 ---
 
-## 🚀 Funcionalidades
+## 👩🏻‍💻 Funcionalidades
 
 * ➕ Adicionar links personalizados
 * 🗂️ Organização por categorias (Cursos, Projetos, Sites, Artigos, Documentação, etc.)
@@ -76,7 +76,7 @@ Este projeto tem como foco:
 Estudante de Desenvolvimento Front-end, com foco em aplicações mobile e web.
 
 
-🔗 LinkedIn: **(https://www.linkedin.com/in/joice-alves-4a6a16255/)**
+🔗 LinkedIn: **(www.linkedin.com/in/joice-alves-dev0101)**
 🔗 GitHub: **(https://github.com/joicealvesdev)**
 
 ---
