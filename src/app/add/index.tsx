@@ -36,7 +36,7 @@ export default function Add() {
     } catch (error) {
       Alert.alert("Erro", "Não foi possível salvar o link")
     }
-  }  
+  }  ''
 
   return (
     <View style={styles.container}>
